@@ -13,7 +13,7 @@ sub new {
     _user_agent_opts => {},
     _user_agent => undef,
     _json => JSON->new,
-  }
+  }, $class;
 
 }
 
