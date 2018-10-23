@@ -1,0 +1,28 @@
+# NAME
+
+Net::Spreedly - Spreedly Payments API v1
+
+# VERSION
+
+version 0.001
+
+# DESCRIPTION
+
+The Spreedly module provides a convenient way of accessing the Spreedly API v1.
+
+# SYNOPSIS
+    use Net::Spreedly;
+
+    my $props = { ... }
+    my $payment = Net::Spreedly->new($props);
+
+# AUTHOR
+
+Tom Heady <cpan@punch.net>
+
+# COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2018 by Tom Heady.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
