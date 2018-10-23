@@ -1,5 +1,7 @@
 package Net::Spreedly::Certificates;
 
+#ABSTRACT:
+
 use strict;
 use warnings;
 
