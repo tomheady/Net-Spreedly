@@ -1,5 +1,7 @@
 package Net::Spreedly::LWP;
 
+#ABSTRACT:
+
 use strict;
 use warnings;
 

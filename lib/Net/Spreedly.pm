@@ -1,5 +1,21 @@
 package Net::Spreedly;
 
+# ABSTRACT: Spreedly Payments API v1
+
+=head1 DESCRIPTION
+
+The Spreedly module provides a convenient way of accessing the Spreedly API v1.
+
+=cut
+
+=head1 SYNOPSIS
+    use Net::Spreedly;
+
+    my $props = { ... }
+    my $payment = Net::Spreedly->new($props);
+
+=cut
+
 use strict;
 use warnings;
 
