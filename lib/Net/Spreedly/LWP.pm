@@ -32,10 +32,22 @@ sub _user_agent {
   return $self->{_user_agent};
 }
 
-sub get {
-  my ($self) = @_;
+sub get_text {
+  my ($self, $url, %params) = @_;
 
-  my $response = $self->user_agent->get($self->url);
+  my $response = $self->user_agent->get($url, %params);
+
+  if ($response->is_error) {
+    die 'error...';
+  }
+
+  return $response->decoded_content;
+}
+
+sub get {
+  my ($self, $url, %params) = @_;
+
+  my $response = $self->user_agent->get($url, %params);
 
   if ($response->is_error) {
     die 'error...';
@@ -51,7 +63,8 @@ sub get {
 sub post {
   my ($self, $params) = @_;
 
-  my $response = $self->user_agent->post($self->url, $params);
+  my $encoded = $self->json_decoder->encode($params);
+  my $response = $self->user_agent->post($self->url, $encoded);
 
   if ($response->is_error) {
     die 'error...';
@@ -67,7 +80,8 @@ sub put {
 
   my ($self, $params) = @_;
 
-  my $response = $self->user_agent->put($self->url, $params);
+  my $encoded = $self->json_decoder->encode($params);
+  my $response = $self->user_agent->put($self->url, $encoded);
 
   if ($response->is_error) {
     die 'error...';

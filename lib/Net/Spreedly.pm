@@ -26,12 +26,16 @@ use LWP::UserAgent;
 use Scalar::Util 'blessed';
 use JSON::MaybeXS 'JSON';
 
+use Net::Spreedly::Gateways;
+use Net::Spreedly::PaymentMethods;
 use Net::Spreedly::Certificates;
+use Net::Spreedly::Transactions;
+use Net::Spreedly::Authorize;
+use Net::Spreedly::Capture;
 
 sub new {
   my ($class, %props) = @_;
 
-  # set defaults
   my $self = bless {
 
   }, $class;
@@ -41,6 +45,7 @@ sub new {
 
 sub gateways {
   my ($self) = @_;
+  return Net::Spreedly::Gateways->new;
 }
 
 sub receivers {
@@ -49,6 +54,7 @@ sub receivers {
 
 sub payment_methods {
   my ($self) = @_;
+  return Net::Spreedly::PaymentMethods->new;
 }
 
 sub certificates {
@@ -58,6 +64,7 @@ sub certificates {
 
 sub transactions {
   my ($self) = @_;
+  return Net::Spreedly::Transactions->new;
 }
 
 sub purchase {
@@ -66,17 +73,19 @@ sub purchase {
 
 sub authorize {
   my ($self) = @_;
+  return Net::Spreedly::Authorize->new;
 }
 
-sub capture {
+sub capture { ### <--- 3
+  my ($self) = @_;
+  return Net::Spreedly::Capture->new;
+}
+
+sub void { ### <--- 4
   my ($self) = @_;
 }
 
-sub void {
-  my ($self) = @_;
-}
-
-sub credit {
+sub credit { ### <--- 5
   my ($self) = @_;
 }
 

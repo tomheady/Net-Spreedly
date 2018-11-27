@@ -8,11 +8,8 @@ use warnings;
 sub new {
   my ($class, %props) = @_;
 
-  # set defaults
-  my $self = bless {
-
-  }, $class;
-
+  my $self = bless \%props, $class;
+  return $self;
 }
 
 sub token           {$_[0]->{token}}

@@ -12,7 +12,6 @@ use base 'Net::Spreedly::LWP';
 sub new {
   my ($class, %props) = @_;
 
-  # set defaults
   my $self = bless {
     _url => '/v1/certificates.json',
 
@@ -23,10 +22,10 @@ sub new {
 sub list {
   my ($self) = @_;
 
-  my $response = $self->get;
+  my $response = $self->get($self->url);
   my $ret = [];
   foreach my $certificate (@{$response->{certificates}}) {
-    push @{$ret} => Net::Spreedly::Certificate->new($certificate);
+    push @{$ret} => Net::Spreedly::Certificate->new(%{$certificate});
   }
   return $ret;
 }
@@ -58,7 +57,8 @@ sub update {
   #   }
   # }
 
-  my $response = $self->put(%params);
+  my $struct = {certificate => \%params};
+  my $response = $self->put($struct);
 
   return Net::Spreedly::Certificate->new($response->{certificate});
 }
