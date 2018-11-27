@@ -61,7 +61,7 @@ sub create_apple_pay {
 }
 
 sub create_third_party {
-  my ($self) = @_;
+  my ($self, %params) = @_;
 
   my $struct = {payment_method => \%params};
   my $response = $self->post($self->url, $struct);
@@ -90,9 +90,9 @@ sub show {
 }
 
 sub update {
-  my ($self) = @_;
+  my ($self, %params) = @_;
 
-  my $payment_method_token = delete %params{payment_method_token};
+  my $payment_method_token = delete $params{payment_method_token};
   my $url = sprintf('/v1/payment_methods/%s.json', $payment_method_token);
 
   my $response = $self->put($url, %params);
@@ -100,7 +100,7 @@ sub update {
 }
 
 sub retain {
-  my ($self) = @_;
+  my ($self, %params) = @_;
 
   my $url = sprintf('/v1/payment_methods/%s/retain.json', $params{payment_method_token});
 
@@ -147,7 +147,7 @@ sub recache {
 sub transactions {
   my ($self, %params) = @_;
 
-  my $payment_method_token = delete{payment_method_token};
+  my $payment_method_token = delete $params{payment_method_token};
   my $url = sprintf('/v1/payment_methods/%s/transactions.json', $payment_method_token);
 
   my $response = $self->get($url, %params);

@@ -39,7 +39,7 @@ sub pass_in_credit_card {
 }
 
 sub pass_in_android_pay {
-  my ($self) = @_;
+  my ($self, %params) = @_;
 
   my $gateway_token = delete $params{gateway_token};
   my $url = sprintf('/v1/gateways/%s/authorize.json', $gateway_token);
@@ -53,7 +53,7 @@ sub pass_in_android_pay {
 }
 
 sub pass_in_apple_pay {
-  my ($self) = @_;
+  my ($self, %params) = @_;
 
   my $gateway_token = delete $params{gateway_token};
   my $url = sprintf('/v1/gateways/%s/authorize.json', $gateway_token);

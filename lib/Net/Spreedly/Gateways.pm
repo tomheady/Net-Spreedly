@@ -66,7 +66,7 @@ sub create_production {
 }
 
 sub show {
-  my ($self) = @_;
+  my ($self, %params) = @_;
 
   my $url = sprintf('/v1/gateways/%s.json', $params{gateway_token});
 
@@ -106,7 +106,7 @@ sub redact {
 sub transactions {
   my ($self, %params) = @_;
 
-  my $gateway_token = delete %params{gateway_token};
+  my $gateway_token = delete $params{gateway_token};
 
   my $url = sprintf('/v1/gateways/%s/transactions.json', $gateway_token);
   my $response = $self->put($url, %params);

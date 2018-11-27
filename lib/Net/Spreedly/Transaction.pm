@@ -38,6 +38,6 @@ sub data                             {$_[0]->{data}}
 sub payment_method       {Net::Spreedly::PaymentMethod->new($_[0]->{payment_method})}
 sub gateway              {Net::Spreedly::Gateway->new($_[0]->{gateway})}
 sub basis_payment_method {Net::Spreedly::BasisPaymentMethod->new($_[0]->{basis_payment_method})}
-sub response             {Net::Spreedly::Response->new($_[0]->{response});
+sub response             {Net::Spreedly::Response->new($_[0]->{response})};
 
 1;

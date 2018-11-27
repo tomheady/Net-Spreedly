@@ -38,7 +38,7 @@ sub show {
 }
 
 sub transcript {
-  my ($self) = @_;
+  my ($self, %params) = @_;
 
   my $url = sprintf('/v1/transactions/%s/transcript', $params{transaction_token});
 

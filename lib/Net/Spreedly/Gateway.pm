@@ -34,7 +34,7 @@ sub auth_modes {
 
   my $ret = [];
   foreach my $mode (@{$self->auth_modes}) {
-    push @{$ret} => Net::Spreedly::Gateway::AuthMode->new($modes);
+    push @{$ret} => Net::Spreedly::Gateway::AuthMode->new($mode);
   }
   return $ret;
 }
